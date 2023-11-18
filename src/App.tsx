@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { type FunctionComponent } from 'react'
+import Contact from './components/Contact'
+import Who from './components/Who'
+import Works from './components/Works'
+import Hero from './components/Hero'
+import styled from 'styled-components'
+import { CharacterAnimationProvider } from './provider/CharacterAnimations'
 
-function App() {
+const Container = styled.div`
+  height: 100vh;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  overflow-y: auto;
+  scrollbar-width: none;
+  color: white;
+  background: url('./img/bg.jpeg');
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`
+
+const App: FunctionComponent = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <CharacterAnimationProvider>
+      <Container>
+        <Hero />
+        <Contact />
+        <Who />
+        <Works />
+      </Container>
+    </CharacterAnimationProvider>
+  )
 }
 
-export default App;
+export default App
